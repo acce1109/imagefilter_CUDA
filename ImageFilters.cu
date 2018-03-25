@@ -8,10 +8,10 @@
 
 using namespace std;
 
-BITMAPFILEHEADER bitfilehead; // 14 bajtowy nag³ówek pliku bitmapy,/ Zawiera informacje o parametrach pliku BMP
-BITMAPINFOHEADER bitinfohead; // Zawiera informacje na temat wymiarów i kolorów w formacie DIB,/ Zawiera informacje o parametrach bitmapy.
+BITMAPFILEHEADER bitfilehead; // 14 bajtowy nagÂ³Ã³wek pliku bitmapy,/ Zawiera informacje o parametrach pliku BMP
+BITMAPINFOHEADER bitinfohead; // Zawiera informacje na temat wymiarÃ³w i kolorÃ³w w formacie DIB,/ Zawiera informacje o parametrach bitmapy.
 
-// Wczytywanie nag³ówka pliku
+// Wczytywanie nagÂ³Ã³wka pliku
 void OpenImage()
 {
 	char *filename = "lena.bmp";
@@ -180,7 +180,7 @@ int main()
 	unsigned char *buffer = (unsigned char*)malloc(bitinfohead.biWidth*bitinfohead.biHeight * channels);
 	unsigned char *result = (unsigned char*)malloc(bitinfohead.biWidth*bitinfohead.biHeight * channels);
 	
-	//Czytanie danych z pliku i tworzenie chara z danymi zdjêcia
+	//Czytanie danych z pliku i tworzenie chara z danymi zdjÃªcia
 	char *filename = "lena.bmp";
 	FILE *input = fopen(filename, "rb+");
 
@@ -219,7 +219,7 @@ int main()
 
 	cudaMemcpy(result, result_cuda, bitinfohead.biWidth*bitinfohead.biHeight * channels, cudaMemcpyDeviceToHost);
 	
-	//Zapisywanie wyjœciowych danych z kernela jako plik bmp
+	//Zapisywanie wyjÅ“ciowych danych z kernela jako plik bmp
 	char *plik = "projekt_output.bmp";
 	FILE *output = fopen(plik, "wb+");
 
@@ -230,7 +230,7 @@ int main()
 	}
 	printf("- Plik zostal otwarty pomyslnie (Zapisywanie bitmapy do pliku)\n");
 
-	// Zapis nag³ówka
+	// Zapis nagÂ³Ã³wka
 	fwrite(&bitfilehead, 1, sizeof(bitfilehead), output);
 	// Zapis informacji o pliku
 	fwrite(&bitinfohead, sizeof(bitinfohead), 1, output);
